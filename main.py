@@ -9,8 +9,8 @@ UPLOAD_FOLDER = "static/user_images"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # --------------------- Globals
-color_data = []
-filename = ""
+# color_data = []
+# filename = ""
 
 
 app = Flask(__name__)
@@ -45,7 +45,7 @@ def home():
     return render_template("index.html", color_data=sample_color_data)
 
 
-@ app.route("/extract/", methods=["GET", "POST"])
+@ app.route("/extract/", methods=["GET"])
 def color_extract_interface():
     global color_data
     return render_template("color_extract.html", color_data=color_data, file_name=filename)
