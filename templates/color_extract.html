@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Settings&Upload Image - Extract Color</title>
+    <link rel="stylesheet" href="../static/css/color_extract.css" />
+  </head>
+  <body>
+    <header>
+      <form
+        action="{{ url_for('get_image_colors')}}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div id="file-upload-cont">
+          <label for="userImage" id="userImageLabel">SELECT IMAGE</label>
+          <input
+            type="file"
+            name="userImage"
+            id="userImage"
+            accept="image/png, image/jpg, image/jpeg"
+            required
+            onchange="getFileName()"
+          />
+          <br />
+          <span id="userMessage"
+            ><p style="display: inline-block">
+              Please Select a File First
+            </p></span
+          >
+          <br />
+          <input
+            type="submit"
+            value="EXTRACT COLORS"
+            id="submitImage"
+            onclick="isFileSelected()"
+          />
+        </div>
+      </form>
+    </header>
+    {% if color_data: %}
+    <section class="color-data">
+      <div class="color-flex-cont">
+        {% for data in color_data["hex_colors"]: %}
+        <div class="color-flex-item" style="background-color: {{ data }};">
+          {{ data }}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="color-flex-cont">
+        {% for data in color_data["rgb_colors"]: %}
+        <div
+          class="color-flex-item"
+          style="background-color: {{ color_data['hex_colors'][loop.index - 1] }};"
+        >
+          {{ data }}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="img-container">
+        <img
+          src="../static/user_images/{{ file_name }}"
+          alt="user-color-image"
+        />
+      </div>
+    </section>
+    {% endif %}
+  </body>
+  <script>
+    let fileInput = document.getElementById("userImage");
+    let fileLabel = document.getElementById("userImageLabel");
+    let cancelBtn = document.getElementsByClassName("cancel-file")[0];
+    let imageForm = document.getElementsByTagName("form")[0];
+    let userMessage = document.getElementById("userMessage");
+    function isFileSelected() {
+      if (fileInput.value != "") {
+        imageForm.submit();
+      } else {
+        userMessage.style.display = "block";
+      }
+    }
+    function getFileName() {
+      if (fileInput.value == "") {
+        fileLabel.innerText = "Select Image";
+        cancelBtn.style.display = "none";
+      } else {
+        fileLabel.innerText = fileInput.value.split("\\").at(-1);
+        cancelBtn.style.display = "block";
+      }
+    }
+  </script>
+</html>

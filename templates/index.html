@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page - Color Platte Extract</title>
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function fillColorValues() {
+        $.ajax({
+          url: "url_for('detect_colors')",
+          method: "post",
+          data: {
+            fileName: "rabih",
+          },
+        });
+      }
+    </script>
+  </head>
+  <body onload="fillColors()">
+    <header>
+      <img
+        class="header-top-img"
+        src="../static/images/2304-PhotoRoom-PhotoRoom-2.png"
+        alt="color-splash-hd-image"
+      />
+      <img
+        class="header-bottom-img"
+        src="../static/images/2304-PhotoRoom-PhotoRoom-2.png"
+        alt="color-splash-hd-image"
+      />
+      <div class="title-cont">
+        <h1 class="title">GET YOUR FAVORITE COLOR PALETTE</h1>
+        <a
+          class="link-btn start-link"
+          href="{{ url_for('color_extract_interface')}}"
+          >GET STARTED</a
+        >
+      </div>
+    </header>
+    <section class="samples">
+      <h2 class="samples-title">SAMPLES</h2>
+      <div class="sample-cards-cont">
+        <div class="card-wrapper">
+          <div class="sample-card">
+            <div class="card-front card-front-1 hint-card"></div>
+            <div class="card-back">
+              {% for color in color_data[0]["hex_colors"]: %}
+              <div
+                class="color-item"
+                style="text-align: center; padding: 20px 0; background-color: {{ color}}"
+              >
+                {{ color }}
+                <span class="rgb_color" style="display: block"
+                  >{{ color_data[0]["rgb_colors"][loop.index - 1]}}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="sample-card">
+            <div class="card-front card-front-2"></div>
+            <div class="card-back">
+              {% for color in color_data[1]["hex_colors"]: %}
+              <div
+                class="color-item"
+                style="text-align: center; padding: 20px 0; background-color: {{ color }}"
+              >
+                {{ color }}
+                <span class="rgb_color" style="display: block"
+                  >{{ color_data[1]["rgb_colors"][loop.index - 1]}}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="sample-card">
+            <div class="card-front card-front-3"></div>
+            <div class="card-back">
+              {% for color in color_data[2]["hex_colors"]: %}
+              <div
+                class="color-item"
+                style="text-align: center; padding: 20px 0; background-color: {{ color }}"
+              >
+                {{ color }}
+                <span class="rgb_color" style="display: block"
+                  >{{ color_data[2]["rgb_colors"][loop.index - 1]}}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="sample-card">
+            <div class="card-front card-front-4"></div>
+            <div class="card-back">
+              {% for color in color_data[3]["hex_colors"]: %}
+              <div
+                class="color-item"
+                style="text-align: center; padding: 20px 0; background-color: {{ color }}"
+              >
+                {{ color }}
+                <span class="rgb_color" style="display: block"
+                  >{{ color_data[3]["rgb_colors"][loop.index - 1]}}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="sample-card">
+            <div class="card-front card-front-5"></div>
+            <div class="card-back">
+              {% for color in color_data[4]["hex_colors"]: %}
+              <div
+                class="color-item"
+                style="text-align: center; padding: 20px 0; background-color: {{ color }}"
+              >
+                {{ color }}
+                <span class="rgb_color" style="display: block"
+                  >{{ color_data[4]["rgb_colors"][loop.index - 1]}}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="card-wrapper">
+          <div class="sample-card">
+            <div class="card-front card-front-6"></div>
+            <div class="card-back">
+              {% for color in color_data[5]["hex_colors"]: %}
+              <div
+                class="color-item"
+                style="text-align: center; padding: 20px 0; background-color: {{ color }}"
+              >
+                {{ color }}
+                <span class="rgb_color" style="display: block"
+                  >{{ color_data[5]["rgb_colors"][loop.index - 1]}}</span
+                >
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="testimonies">
+      <h1 class="testimonies-title">
+        <span class="stand-out-word">You</span> Keep Us Going
+      </h1>
+      <div class="testi-wrapper">
+        <div class="testi-item">
+          <div class="testi-user-name">Daenerys Targaryen said:</div>
+          <div class="testi-user-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo porro
+            ipsam, mollitia illo explicabo praesentium, quibusdam iure
+            consequuntur, fugit culpa dicta expedita tempore velit suscipit id
+            sit quam natus quo at officia dolores ratione? Fugiat consequatur
+            rerum quibusdam dolores consectetur cupiditate, animi voluptate,
+            doloremque, ducimus autem deleniti! Blanditiis, dignissimos non.
+          </div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-user-name">John Snow said:</div>
+          <div class="testi-user-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo porro
+            ipsam, mollitia illo explicabo praesentium, quibusdam iure
+            consequuntur, fugit culpa dicta expedita tempore velit suscipit id
+            sit quam natus quo at officia dolores ratione? Fugiat consequatur
+            rerum quibusdam dolores consectetur cupiditate, animi voluptate,
+            doloremque, ducimus autem deleniti! Blanditiis, dignissimos non.
+            rerum quibusdam dolores consectetur cupiditate, animi voluptate,
+            doloremque, ducimus autem deleniti! Blanditiis, dignissimos non.
+          </div>
+        </div>
+        <div class="testi-item">
+          <div class="testi-user-name">Rob Stark said:</div>
+          <div class="testi-user-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo porro
+            ipsam, mollitia illo explicabo praesentium, quibusdam iure
+            consequuntur, fugit culpa dicta expedita tempore velit suscipit id
+            sit quam natus quo at officia dolores ratione? Fugiat consequatur
+          </div>
+        </div>
+      </div>
+      <div
+        class="love-emoji"
+        style="
+          color: red;
+          text-align: center;
+          font-size: 20px;
+          margin: 0;
+          padding: 0;
+        "
+      >
+        ❤
+      </div>
+      <hr width="50%" color="#ccc" />
+    </section>
+    <footer>
+      <img
+        class="left-back-img"
+        src="../static/images/2304-PhotoRoom-PhotoRoom-2.png"
+      />
+      <img
+        class="right-back-img"
+        src="../static/images/2304-PhotoRoom-PhotoRoom-2.png"
+      />
+      <div class="flex-cont">
+        <div class="social-cont">
+          <span class="social-header">Stay Tuned: </span>
+          <a href="#" class="social-item footer-link">Facebook</a>
+          <a href="#" class="social-item footer-link">Twitter</a>
+          <a href="#" class="social-item footer-link">Insta</a>
+        </div>
+        <div class="support-cont">
+          <span class="social-header">Reach Out: </span>
+          <a href="#" class="support-item footer-link">Contact Us</a>
+          <a href="#" class="support-item footer-link">About Us</a>
+          <a href="#" class="support-item footer-link">Support Our Work</a>
+        </div>
+      </div>
+      <div class="copy">Rabih Harb © 2012 - 2021</div>
+    </footer>
+  </body>
+</html>
