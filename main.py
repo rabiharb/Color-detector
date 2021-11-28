@@ -5,7 +5,7 @@ import json
 import os
 
 
-UPLOAD_FOLDER = r"Professional\Color-Detector-WebApp\static\user_images"
+UPLOAD_FOLDER = r"static\user_images"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # --------------------- Globals
@@ -40,7 +40,7 @@ def get_image_colors():
 @ app.route("/")
 def home():
     sample_color_data = {}
-    with open(r"Professional\Color-Detector-WebApp\json\samples_data.json", encoding="UTF-8") as f:
+    with open(r"json\samples_data.json", encoding="UTF-8") as f:
         sample_color_data = json.load(fp=f)
     return render_template("index.html", color_data=sample_color_data)
 
