@@ -42,22 +42,24 @@
     </header>
     {% if color_data: %}
     <section class="color-data">
-      <div class="color-flex-cont">
-        {% for data in color_data["hex_colors"]: %}
-        <div class="color-flex-item" style="background-color: {{ data }};">
-          {{ data }}
+      <div class="extracted-colors-wrapper">
+        <div class="color-flex-cont">
+          {% for data in color_data["hex_colors"]: %}
+          <div class="color-flex-item" style="background-color: {{ data }};">
+            {{ data }}
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-      </div>
-      <div class="color-flex-cont">
-        {% for data in color_data["rgb_colors"]: %}
-        <div
-          class="color-flex-item"
-          style="background-color: {{ color_data['hex_colors'][loop.index - 1] }};"
-        >
-          {{ data }}
+        <div class="color-flex-cont">
+          {% for data in color_data["rgb_colors"]: %}
+          <div
+            class="color-flex-item"
+            style="color: #000; background-color: {{ color_data['hex_colors'][loop.index - 1] }};"
+          >
+            {{ data }}
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
       <div class="img-container">
         <img
@@ -71,23 +73,21 @@
   <script>
     let fileInput = document.getElementById("userImage");
     let fileLabel = document.getElementById("userImageLabel");
-    let cancelBtn = document.getElementsByClassName("cancel-file")[0];
     let imageForm = document.getElementsByTagName("form")[0];
     let userMessage = document.getElementById("userMessage");
     function isFileSelected() {
-      if (fileInput.value != "") {
-        imageForm.submit();
-      } else {
+      if (fileInput.value == "") {
         userMessage.style.display = "block";
+      } else {
+        userMessage.style.display = "none";
       }
     }
     function getFileName() {
       if (fileInput.value == "") {
         fileLabel.innerText = "Select Image";
-        cancelBtn.style.display = "none";
       } else {
         fileLabel.innerText = fileInput.value.split("\\").at(-1);
-        cancelBtn.style.display = "block";
+        isFileSelected();
       }
     }
   </script>
