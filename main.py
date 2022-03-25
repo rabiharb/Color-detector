@@ -7,11 +7,8 @@ import ast
 import os
 
 
-<<<<<<< HEAD
 UPLOAD_FOLDER = r".\static\user_images"
-=======
 UPLOAD_FOLDER = "static/user_images"
->>>>>>> af9ab4828d008a94ec5ec7810f56d2ddd5754d19
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # --------------------- Globals
@@ -43,11 +40,7 @@ def get_image_colors():
 @ app.route("/")
 def home():
     sample_color_data = {}
-<<<<<<< HEAD
     with open(r".\json\samples_data.json", encoding="UTF-8") as f:
-=======
-    with open("json/samples_data.json", encoding="UTF-8") as f:
->>>>>>> af9ab4828d008a94ec5ec7810f56d2ddd5754d19
         sample_color_data = json.load(fp=f)
     return render_template("index.html", color_data=sample_color_data)
 
