@@ -67,7 +67,7 @@ header {
 }
 #userMessage {
   color: red;
-  font-size: 22px;
+  font-size: 1.5rem;
   display: none;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -77,7 +77,7 @@ header {
 
 .color-data {
   background-color: #fff;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 .color-flex-cont {
   display: flex;
@@ -100,4 +100,37 @@ header {
 }
 .img-container > img {
   max-width: 100%;
+}
+/* ----------------------------------------------- Media-Queries
+------------------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  #file-upload-cont {
+    padding: 5rem;
+  }
+  #submitImage {
+    width: 100%;
+  }
+  .extracted-colors-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+  .color-flex-cont {
+    width: 45%;
+    flex-direction: column;
+  }
+  .color-flex-item {
+    width: 100%;
+    margin-bottom: 2%;
+  }
+  .img-container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 360px) {
+  html {
+    font-size: 10px;
+  }
 }
