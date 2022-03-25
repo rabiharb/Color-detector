@@ -39,7 +39,7 @@ def extract_colors(img):
 
 def main(img_path=""):
     original_image = cv2.imread(
-        fr"{img_path}")
+        f"{img_path}")
     image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
     modified_image = pre_process(image)
     return extract_colors(modified_image)

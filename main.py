@@ -7,7 +7,6 @@ import ast
 import os
 
 
-UPLOAD_FOLDER = r".\static\user_images"
 UPLOAD_FOLDER = "static/user_images"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
@@ -40,7 +39,7 @@ def get_image_colors():
 @ app.route("/")
 def home():
     sample_color_data = {}
-    with open(r".\json\samples_data.json", encoding="UTF-8") as f:
+    with open("./json/samples_data.json", encoding="UTF-8") as f:
         sample_color_data = json.load(fp=f)
     return render_template("index.html", color_data=sample_color_data)
 
@@ -53,9 +52,8 @@ def color_extract_interface():
     except:
         color_data = {}
         file_name = ""
-    print(color_data, file_name, type(color_data))
     return render_template("color_extract.html", color_data=color_data, file_name=file_name)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
