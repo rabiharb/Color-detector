@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .error-box {
+        text-align: center;
+        width: 80%;
+        max-width: 1400px;
+        margin-inline: auto;
+        font-size: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.75);
+        color: rgb(240, 240, 240);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 10vh 0;
+        transform: translate(-50%, -50%);
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-box">
+      {% if message == "format" %}
+      <p class="error-message">
+        Looks like the image format is not supported yet, Please select an image
+        with one of the following formats ====> ["jpeg" or "png" or "jpg"].
+      </p>
+      {% endif %}
+    </div>
+  </body>
+</html>

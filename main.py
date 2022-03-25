@@ -1,4 +1,3 @@
-from distutils.log import debug
 from flask import Flask, request, render_template, url_for
 from werkzeug.utils import redirect, secure_filename
 from color_detector import main as get_color_data
@@ -31,6 +30,8 @@ def get_image_colors():
         file_name = secure_filename(user_image_file.filename)
         user_image_file.save(os.path.join(
             app.config['UPLOAD_FOLDER'], file_name))
+    else:
+        return redirect(url_for("app_internal_error", error_type="format"))
     color_data = get_color_data(os.path.join(
         app.config['UPLOAD_FOLDER'], file_name))
     return redirect(url_for("color_extract_interface", file_name=file_name, color_data=color_data))
@@ -53,6 +54,13 @@ def color_extract_interface():
         color_data = {}
         file_name = ""
     return render_template("color_extract.html", color_data=color_data, file_name=file_name)
+
+
+@ app.route("/error", methods=["GET"])
+def app_internal_error():
+    error_type = request.args.get("error_type")
+    if error_type == "format":
+        return render_template("error.html", message="format")
 
 
 if __name__ == "__main__":
