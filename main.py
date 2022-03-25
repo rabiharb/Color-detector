@@ -7,7 +7,7 @@ import ast
 import os
 
 
-UPLOAD_FOLDER = "static/user_images"
+UPLOAD_FOLDER = "./static/user_images"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # --------------------- Globals

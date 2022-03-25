@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
 }
 header {
-  background: url("../images/wtfff.png"),
+  background: url("../images/texture.png"),
     linear-gradient(to bottom, var(--main-color), var(--secondary-color))
       no-repeat;
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 20%), 0 1px 3px rgb(0 0 0 / 40%),
